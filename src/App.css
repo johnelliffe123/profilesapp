@@ -4,6 +4,13 @@
   padding: 2rem;
   text-align: center;
 }
+.reactlogo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+  text-align: left; 
+}
 
 .logo {
   height: 6em;
