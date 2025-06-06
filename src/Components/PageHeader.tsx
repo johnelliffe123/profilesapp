@@ -1,18 +1,15 @@
-import reactLogo from '../assets/react.svg'
-import '../App.css'
+import reactLogo from "../assets/react.svg";
+import "../App.css";
 
 function PageHeader() {
-
   return (
     <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="reactlogo" alt="React logo" />
-        </a>
-        <h1>Simplifying the Safeguard Mechanism X</h1>
-      </div>
+      <h1>
+        <img src={reactLogo} className="reactlogo" alt="React logo" />
+        Simplifying the Safeguard Mechanism
+      </h1>
     </>
-  )
+  );
 }
 
-export default PageHeader
+export default PageHeader;
