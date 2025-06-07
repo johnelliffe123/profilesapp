@@ -6,8 +6,14 @@ import PageHeader from "./Components/PageHeader";
 
 import { Button } from "./Components/ui/button";
 
+import EmissionsPage from "./Components/emissionsTable/page";
+
 function App() {
   const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
 
   return (
     <>
@@ -22,11 +28,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={handleClick}>count is {count}</button>
         <div className="flex min-h-svh flex-col items-center justify-center">
-          <Button onClick={() => setCount((count) => count + 1)}>
+          <Button variant="destructive" onClick={handleClick}>
             Click me - count is {count}
           </Button>
         </div>
@@ -38,6 +42,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <EmissionsPage></EmissionsPage>
     </>
   );
 }

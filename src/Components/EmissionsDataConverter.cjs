@@ -20,6 +20,13 @@ function getCSVArray() {
   }
 }
 
+function toKey(str) {
+  return str.trim().replace(/[ /](.)/g, (match, char) => char.toUpperCase());
+}
+function toValue(str) {
+  return str?.replaceAll('"', "").trim();
+}
+
 function csvToJsonRegex(rows) {
   //const rows = csvString.split("\n");
   const headers = rows[0].split(regex);
@@ -30,7 +37,7 @@ function csvToJsonRegex(rows) {
     const obj = {};
     if (values.length > 1) {
       for (let j = 0; j < headers.length; j++) {
-        obj[headers[j].trim()] = values[j]?.trim();
+        obj[toKey(headers[j])] = toValue(values[j]);
       }
       jsonData.push(obj);
     }
@@ -47,7 +54,7 @@ const jsonData = csvToJsonRegex(csvArray);
 console.log(jsonData);
 
 fs.writeFile(
-  "../../data/2023-24-baselines-and-emissions-table.json",
+  "../../src/assets/2023-24-baselines-and-emissions-table.json",
   jsonData,
   "utf8",
   (err) => {
