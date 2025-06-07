@@ -5,10 +5,11 @@ import { type ColumnDef } from "@tanstack/react-table";
 export type Emissions = {
   FacilityName: string;
   ResponsibleEmitter: string;
-  StateTerritoryOfOperation: "NSW" | "VIC" | "QLD" | "SA" | "WA" | "National";
+  StateTerritoryOfOperation: string;
+  //  StateTerritoryOfOperation:    | "NSW" | "VIC" | "NT" | "QLD" | "SA" | "TAS" | "WA" | "National";
   ANZSIC: string;
-  ERC: number;
-  BaselineEmissionsNumber: number;
+  ERC: string;
+  BaselineEmissionsNumber: string;
 };
 
 export const columns: ColumnDef<Emissions>[] = [
