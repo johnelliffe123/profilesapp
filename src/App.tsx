@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import PageHeader from "./Components/PageHeader";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "./Components/ui/button";
 
 function App() {
   const [count, setCount] = useState(0);
