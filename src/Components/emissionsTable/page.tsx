@@ -9,7 +9,8 @@ function getData(): Emissions[] {
     //    const jsonStr = fs.readFileSync(emissionsJson, "utf8");
 
     //return JSON.parse(emissionsJson);
-    return emissionsJson.slice(0, 10);
+    //return emissionsJson.slice(0, 10);
+    return emissionsJson;
   } catch (err) {
     console.error(err);
     return [];

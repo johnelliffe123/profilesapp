@@ -1,4 +1,12 @@
 import { type ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "@/Components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/Components/ui/hover-card";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -10,16 +18,55 @@ export type Emissions = {
   ANZSIC: string;
   ERC: string;
   BaselineEmissionsNumber: string;
+
+  Notes: string;
 };
+
+/*
+export const columns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: "amount",
+    header: () => <div className="text-right">Amount</div>,
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("amount"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount);
+
+      return <div className="text-right font-medium">{formatted}</div>;
+    },
+  },
+];
+ */
 
 export const columns: ColumnDef<Emissions>[] = [
   {
     accessorKey: "FacilityName",
-    header: "Facility name",
+    //header: () => <div className="text-left">Facility name</div>,
+
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Facility name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+
+    cell: ({ row }) => (
+      <div className="text-left">{row.getValue("FacilityName")}</div>
+    ),
   },
   {
     accessorKey: "ResponsibleEmitter",
     header: "Responsible emitter",
+    cell: ({ row }) => (
+      <div className="text-left">{row.getValue("ResponsibleEmitter")}</div>
+    ),
   },
   {
     accessorKey: "StateTerritoryOfOperation",
@@ -27,7 +74,7 @@ export const columns: ColumnDef<Emissions>[] = [
   },
   {
     accessorKey: "ANZSIC",
-    header: "ANZSIC",
+    header: () => <div className="text-center">ANZSIC</div>,
   },
   {
     accessorKey: "ERC",
@@ -35,7 +82,18 @@ export const columns: ColumnDef<Emissions>[] = [
   },
   {
     accessorKey: "BaselineEmissionsNumber",
-    header: "Baseline emissions number",
+    // header: "Baseline emissions number",
+    header: () => (
+      <div className="text-right">
+        Baseline <br />
+        emissions number
+      </div>
+    ),
+    cell: ({ row }) => (
+      <div className="text-right">
+        {row.getValue("BaselineEmissionsNumber")}
+      </div>
+    ),
   },
   {
     accessorKey: "CoveredEmissions",
@@ -100,5 +158,51 @@ export const columns: ColumnDef<Emissions>[] = [
   {
     accessorKey: "Notes",
     header: "Notes",
+
+    cell: ({ row }) => {
+      const n = row.original.Notes.trim();
+      //const notes = toString(row.getValue("Notes"));
+      return n != "-" ? (
+        <HoverCard>
+          <HoverCardTrigger>Notes</HoverCardTrigger>
+          <HoverCardContent>{n}</HoverCardContent>
+        </HoverCard>
+      ) : (
+        ""
+      );
+    },
   },
 ];
+
+/*
+    cell: ({ row }) => {
+      const n = row.original.Notes.trim();
+      //const notes = toString(row.getValue("Notes"));
+      return n != "-" ? (
+        <Popover>
+          <PopoverTrigger>Notes</PopoverTrigger>
+          <PopoverContent>{n}</PopoverContent>
+        </Popover>
+      ) : (
+        ""
+      );
+    },
+
+
+
+    cell: ({ row }) => (
+      <div className="text-right">
+        {row.getValue("BaselineEmissionsNumber")}
+      </div>
+    ),
+
+        cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("amount"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount);
+
+      return <div className="text-right font-medium">{formatted}</div>;
+    },
+*/
