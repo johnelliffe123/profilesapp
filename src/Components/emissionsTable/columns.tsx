@@ -1,15 +1,10 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import { Button } from "@/Components/ui/button";
+import { Button } from "@/components/ui/button";
 //import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/Components/ui/hover-card";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
+import EmissionsSheet from "./emissions-sheet";
+
 export type Emissions = {
   FacilityName: string;
   ResponsibleEmitter: string;
@@ -18,7 +13,21 @@ export type Emissions = {
   ANZSIC: string;
   ERC: string;
   BaselineEmissionsNumber: string;
-
+  CoveredEmissions: string;
+  BorrowingAdjustmentAmount: string;
+  ACCUsIssued: string;
+  ACCUsDeemedSurrendered: string;
+  ACCUsSurrendered: string;
+  SMCsSurrendered: string;
+  NetEmissionsNumber: string;
+  NetPositionNumber: string;
+  SMCsIssued: string;
+  CumulativeMYMPNetEmissionsNumber: string;
+  CumulativeMYMPNetPositionNumber: string;
+  GHGCarbonDioxide: string;
+  GHGMethane: string;
+  GHGNitrousOxide: string;
+  GHGOther: string;
   Notes: string;
 };
 
@@ -71,6 +80,7 @@ export const columns: ColumnDef<Emissions>[] = [
   {
     accessorKey: "StateTerritoryOfOperation",
     header: "State/Territory of operation",
+    enableHiding: true,
   },
   {
     accessorKey: "ANZSIC",
@@ -95,6 +105,7 @@ export const columns: ColumnDef<Emissions>[] = [
       </div>
     ),
   },
+  /*
   {
     accessorKey: "CoveredEmissions",
     header: "Covered emissions",
@@ -155,10 +166,23 @@ export const columns: ColumnDef<Emissions>[] = [
     accessorKey: "GHGOther",
     header: "GHG Other",
   },
+  */
   {
-    accessorKey: "Notes",
-    header: "Notes",
+    accessorKey: "Action",
+    header: "Action",
+    cell: ({ row }) => {
+      //const n = row.original.Notes.trim();
+      //const notes = toString(row.getValue("Notes"));
+      return (
+        <div>
+          <EmissionsSheet row={row} />
+        </div>
+      );
+    },
+  },
+];
 
+/*
     cell: ({ row }) => {
       const n = row.original.Notes.trim();
       //const notes = toString(row.getValue("Notes"));
@@ -168,13 +192,14 @@ export const columns: ColumnDef<Emissions>[] = [
           <HoverCardContent>{n}</HoverCardContent>
         </HoverCard>
       ) : (
-        ""
+        <div>
+          <p>chips</p>
+          <EmissionsSheet row={row} />;
+        </div>
       );
     },
-  },
-];
 
-/*
+
     cell: ({ row }) => {
       const n = row.original.Notes.trim();
       //const notes = toString(row.getValue("Notes"));

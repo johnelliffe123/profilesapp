@@ -21,7 +21,7 @@ export default function EmissionsPage() {
   const data = getData();
 
   return (
-    <div className="container mx-auto py-10">
+    <div className=" border-b">
       <DataTable columns={columns} data={data} />
     </div>
   );
