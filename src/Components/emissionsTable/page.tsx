@@ -1,4 +1,3 @@
-//import fs from "fs";
 import emissionsJson from "../../assets/2023-24-baselines-and-emissions-table.json";
 
 import { columns, type Emissions } from "./columns";

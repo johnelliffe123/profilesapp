@@ -8,30 +8,8 @@ import {
 } from "@/components/ui/sheet";
 //import type { Row } from "@tanstack/react-table";
 
-//import type { Emissions } from "./columns";
-import type {
-  JSX,
-  JSXElementConstructor,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-} from "react";
-
-/*
-interface EmissionsSheetProps<Emissions> {
-  row: Row<Emissions>;
-}
-
-export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-
-*/
+import type { Emissions } from "./columns";
+import type { JSX } from "react";
 
 interface EmissionsSheetProps<Emissions> {
   data: Emissions;
@@ -40,27 +18,6 @@ interface EmissionsSheetProps<Emissions> {
 export default function EmissionsSheet<Emissions>({
   data,
 }: EmissionsSheetProps<Emissions>) {
-  //const fn = row.getValue("FacilityName");
-
-  /*
-  function Sheet({
-    ...props
-  }: React.ComponentProps<typeof SheetPrimitive.Root>) {
-    return <SheetPrimitive.Root data-slot="sheet" {...props} />;
-  }
-*/
-  /*
-  function DoLine1({ label, dataKey }) {
-    const x = data[dataKey];
-    console.log(`label: ${label} val: ${x}`);
-    return (
-      <>
-        <div className="text-right flex">{label}</div>
-        <div className="text-left flex">data.${dataKey}</div>
-      </>
-    );
-  }
-*/
   function DoLine({ label, value }): JSX.Element {
     return (
       <div className="flex">
@@ -115,6 +72,42 @@ export default function EmissionsSheet<Emissions>({
     </Sheet>
   );
 }
+
+/*
+interface EmissionsSheetProps<Emissions> {
+  row: Row<Emissions>;
+}
+
+export function DataTable<TData, TValue>({
+  columns,
+  data,
+}: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+
+*/
+
+/*
+  function Sheet({
+    ...props
+  }: React.ComponentProps<typeof SheetPrimitive.Root>) {
+    return <SheetPrimitive.Root data-slot="sheet" {...props} />;
+  }
+*/
+/*
+  function DoLine1({ label, dataKey }) {
+    const x = data[dataKey];
+    console.log(`label: ${label} val: ${x}`);
+    return (
+      <>
+        <div className="text-right flex">{label}</div>
+        <div className="text-left flex">data.${dataKey}</div>
+      </>
+    );
+  }
+*/
 
 /*
 

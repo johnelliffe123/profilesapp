@@ -3,7 +3,7 @@ import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 //import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
-import EmissionsSheet from "./emissions-sheet";
+// import EmissionsSheet from "./emissions-sheet";
 
 export type Emissions = {
   FacilityName: string;
@@ -90,6 +90,7 @@ export const columns: ColumnDef<Emissions>[] = [
     accessorKey: "ERC",
     header: "ERC",
   },
+  /*
   {
     accessorKey: "BaselineEmissionsNumber",
     // header: "Baseline emissions number",
@@ -105,7 +106,6 @@ export const columns: ColumnDef<Emissions>[] = [
       </div>
     ),
   },
-  /*
   {
     accessorKey: "CoveredEmissions",
     header: "Covered emissions",
