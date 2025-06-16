@@ -23,6 +23,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import EmissionsSheet from "./emissions-sheet";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -107,6 +108,9 @@ export function DataTable<TData, TValue>({
                       )}
                     </TableCell>
                   ))}
+                  <TableCell>
+                    <EmissionsSheet data={data[row.index]} />
+                  </TableCell>
                 </TableRow>
               ))
             ) : (

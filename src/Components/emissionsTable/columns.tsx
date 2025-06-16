@@ -166,7 +166,7 @@ export const columns: ColumnDef<Emissions>[] = [
     accessorKey: "GHGOther",
     header: "GHG Other",
   },
-  */
+ 
   {
     accessorKey: "Action",
     header: "Action",
@@ -180,6 +180,7 @@ export const columns: ColumnDef<Emissions>[] = [
       );
     },
   },
+   */
 ];
 
 /*
